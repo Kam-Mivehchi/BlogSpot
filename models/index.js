@@ -1,17 +1,13 @@
-//association file
-
 const User = require('./User');
+const BlogPost = require('./BlogPost');
 
-//change this to blog
+User.hasMany(BlogPost, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE'
+});
 
-// User.hasMany(Project, {
-//     foreignKey: 'user_id',
-//     onDelete: 'CASCADE'
-// });
+BlogPost.belongsTo(User, {
+  foreignKey: 'user_id'
+});
 
-
-// Project.belongsTo(User, {
-//     foreignKey: 'user_id'
-// });
-
-module.exports = { User };
+module.exports = { User, BlogPost };
